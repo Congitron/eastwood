@@ -1,0 +1,49 @@
+{! ifLoggedIn path="loginpartial.js" !}
+{@ then @}
+<form id="logoutForm" action="/logout" method="post" class="navbar-right">
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand">Hello {~ username ~}!</span></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()" class="navLink">Log off</a></li>
+    </ul>
+
+</form>
+<input type="hidden" name="loginSuccess" value="true" />
+{/@}
+{@ else @}
+<ul class="nav navbar-nav navbar-right">
+	<div style="margin-top:12px;float: right;">
+        <div class="signup"><a href="signup">Sign-up disabled for demo</a></div>
+    </div>
+
+    <div class="row" style="float: right; margin-top: 10px;">
+	    <div>
+	        <section id="loginForm">
+	            <form action="verifyLogin" method="post" class="form-horizontal" accept-charset="utf-8">
+	                <div style="display: inline-block;">
+		                <div class="form-group">
+		                    <!-- <label for="id_email" class="col-md-2 control-label">Email</label> -->
+		                    <div class="col-md-10">
+		                        <input type="email" name="email" placeholder="yourname@email.com" required>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <!-- <label for="id_password" class="col-md-2 control-label">Password</label> -->
+		                    <div class="col-md-10">
+		                        <input type="password" name="password" placeholder="password" required>
+		                    </div>
+		                </div>
+	                </div>
+	                <div class="form-group" style="display: inline-block; margin-right: 50px;">
+	                    <div class="col-md-offset-2 col-md-10">
+	                        <input type="submit" value="Login" class="btn btn-default" />
+	                    </div>
+	                </div>
+	            </form>
+	        </section>
+	    </div>
+	</div>
+</ul>
+<input type="hidden" name="loginSuccess" value="false" />
+<script src="{: static path="scripts/jquery.validate.min.js" :}"></script>
+{/@}
+{/!}

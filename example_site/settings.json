@@ -1,0 +1,8 @@
+{
+	"database": "example",
+	"databaseUser": "dbuser",
+	"databasePassword": "dbpassword",
+	"staticFolder": "static",
+	"viewFolder": "views",
+	"controllerFolder": "controllers"
+}

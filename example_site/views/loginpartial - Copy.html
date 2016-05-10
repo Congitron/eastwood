@@ -1,0 +1,25 @@
+{! ifLoggedIn path="loginpartial.js" !}
+{@ then @}
+<form id="logoutForm" action="/logout" method="post" class="navbar-right">
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand">Hello {~ username ~}!</span></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()" class="navLink">Log off</a></li>
+    </ul>
+
+</form>
+<input type="hidden" name="loginSuccess" value="true" />
+{/@}
+{@ else @}
+<ul class="nav navbar-nav navbar-right">
+    <li style="margin-top:20px"><a href="/login" class="navLink">Log in</a></li>
+    <div style="margin-top:12px;float:right;">
+        <!-- <a href="signup"><img src="{: static path="images/signup_button_with_text.png" :}" height="75" /></a> -->
+        <div class="signup"><a href="signup">Sign up now for the Beta Trial</a></div>
+    </div>
+    <!-- <div style="margin-top:12px;float:right;">
+        <img src="{: static path="images/betabotshow.svg" :}" height="75" />
+    </div> -->
+</ul>
+<input type="hidden" name="loginSuccess" value="false" />
+{/@}
+{/!}

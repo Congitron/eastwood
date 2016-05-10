@@ -1,0 +1,12 @@
+{ 
+	"user": { }, 
+	"test": { },
+	"test2": {
+		"table": "blah",
+		"properties": {
+			"id": "id",
+			"propertyA": "columnA",
+			"propertyB": "columnB"
+		}
+	}
+}

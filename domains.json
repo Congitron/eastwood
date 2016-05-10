@@ -1,0 +1,25 @@
+{
+	"www.example-site.com": { 
+		"folder": "example_site",
+		"https": "true",
+		"httpsRedirect": "true"
+	},
+
+	"www.someotherwebsiteyourehosting.com": {
+		"folder": "someotherwebsiteyourehosting",
+		"https": "false",
+		"httpsRedirect": "false"
+	},
+
+	"localhost": {
+		"folder": "example_site",
+		"https": "false",
+		"httpsRedirect": "false"
+	},
+
+	"112.358.132.134": {
+		"folder": "fibonacci",
+		"https": "true",
+		"httpsRedirect": "true"
+	}
+}
