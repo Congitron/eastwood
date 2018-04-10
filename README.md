@@ -43,9 +43,9 @@ Here's an example urls.json:
 	"/test": "testController"
 }
 
-So navigating to http://www.myamazingwebsite.com/ will serve you the page from (directory where eastwood is running)/(project folder)/index.html
+So navigating to http://www.example.com/ will serve you the page from (directory where eastwood is running)/(project folder)/index.html
 
-If you navigate to http://www.myamazingwebsite.com/test then eastwood will call the GET() function on the controller in (eastwood)/(project)/(controller folder)/testController.js
+If you navigate to http://www.example.com/test then eastwood will call the GET() function on the controller in (eastwood)/(project)/(controller folder)/testController.js
 
 It's up to you what you want to do from there.
 
