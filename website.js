@@ -5,7 +5,7 @@ module.exports = function(projectFolder) {
 	Orm = require('./orm.js'),
 	SessionManager = require('./sessionManager');
 
-	self.settings = require('./' + projectFolder + '/settings.json');
+	self.settings = require('../../' + projectFolder + '/settings.json');
 	self.settings.projectFolder = projectFolder;
 	self.requestHandler = new RequestHandler(self);
 	self.dao = new DataAccess(self);

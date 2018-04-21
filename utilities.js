@@ -3,12 +3,12 @@ module.exports = {
 	    str = str.split(trim);
 	    var newstr = '';
 	    var firstWord = false;
-	    for (var j = 0; j < str.length; j++) { 
-	        if (str[j]) { 
+	    for (var j = 0; j < str.length; j++) {
+	        if (str[j]) {
 	            if (firstWord) { newstr += trim; }
 	            else { firstWord = true; }
 	            newstr += str[j];
-	        } 
+	        }
 	    }
 
 	    return newstr;

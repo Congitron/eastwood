@@ -142,7 +142,7 @@ module.exports = function () {
 		try {
 			if (!attributes.name) { return ''; }
 
-			var templateValues = require('./' + this.settings.projectFolder + '/templateValues.json');
+			var templateValues = require('../../' + this.settings.projectFolder + '/templateValues.json');
 			var value = templateValues[attributes.name];
 			return (value) ? value : '';
 		}
@@ -153,7 +153,7 @@ module.exports = function () {
 		try {
 			if (!attributes.name) { return ''; }
 
-			var templateFunctions = require('./' + this.settings.projectFolder + '/templateFunctions.js');
+			var templateFunctions = require('../../' + this.settings.projectFolder + '/templateFunctions.js');
 			var func = templateFunctions[attributes.name];
 			if (!func) { return ''; }
 
@@ -183,7 +183,7 @@ module.exports = function () {
 		        params[paramName] = paramMatch[2];
 		    }
 
-		    var filename = './' + this.settings.projectFolder + '/' + this.settings.viewFolder + '/' + attributes.path;
+		    var filename = '../../' + this.settings.projectFolder + '/' + this.settings.viewFolder + '/' + attributes.path;
 		    var codeBehind = require(filename);
 		    if (!codeBehind) { return ''; }
 

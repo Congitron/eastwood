@@ -11,14 +11,14 @@ module.exports = function (p) {
 	RequestContext = require('./requestContext.js');
 
 	var project = p;
-	var urls = require('./' + project.settings.projectFolder + '/urls.json');
+	var urls = require('../../' + project.settings.projectFolder + '/urls.json');
 
 	var controllers = { };
 	for (var key in urls) {
 	    if (urls.hasOwnProperty(key)) {
 	   		var controller = urls[key];
 	   		if (controller.search('.js') > 0) {
-	        	controllers[key] = require('./' + project.settings.projectFolder + '/' + project.settings.controllerFolder + '/' + controller);
+	        	controllers[key] = require('../../' + project.settings.projectFolder + '/' + project.settings.controllerFolder + '/' + controller);
 	    	}
 	    }
 	}

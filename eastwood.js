@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(config) {
 	var website = require('./website.js'),
 		logger = require('./logger.js');

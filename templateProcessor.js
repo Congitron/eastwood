@@ -1,6 +1,6 @@
-module.exports = function (p) { 
+module.exports = function (p) {
 	var self = this,
-	
+
 	//node.js
 	path = require('path'),
 	fs = require('fs'),
@@ -8,8 +8,8 @@ module.exports = function (p) {
 	//eastwood
 	project = p,
 	mySelf = require('./templateProcessor.js'),
-	templateFunctions = require('./' + project.settings.projectFolder + '/templateFunctions.js'),
-	templateValues = require('./' + project.settings.projectFolder + '/templateValues.json');
+	templateFunctions = require('../../' + project.settings.projectFolder + '/templateFunctions.js'),
+	templateValues = require('../../' + project.settings.projectFolder + '/templateValues.json');
 
 	//self.baseTemplate = null; //these get added on the fly if the template extends a base template, but they're here for reference
 	//self.baseBlock = null;
@@ -41,11 +41,11 @@ module.exports = function (p) {
 			var replacement = self.processMultiline(template, blockMatch, request);
 			template = template.replace(blockMatch[0].toString(), replacement);
 		}
-		
+
 		var extended = false;
 		if (self.baseTemplate && self.baseBlock) {
 			matches = self.baseTemplate.match(/{:(.*):}/g);
-			
+
 			if (!matches) { return template; } //if we can't find a block tag in the base template just return this one without it
 
 			for (var m = 0; m < matches.length; m++) {
@@ -117,7 +117,7 @@ module.exports = function (p) {
 		var filename = project.settings.projectFolder + '/' + project.settings.viewFolder + '/' + attributes.path;
 		var buffer = fs.readFileSync(filename, 'utf-8');
 		var base = null;
-		if (buffer) { 
+		if (buffer) {
 			var tProc = new mySelf(project);
 			base = tProc.processTemplate(buffer, request);
 		}
@@ -135,7 +135,7 @@ module.exports = function (p) {
 		// need to write that async/dependency library
 		var buffer = fs.readFileSync(filename, 'utf-8');
 		var insert = '';
-		if (buffer) { 
+		if (buffer) {
 			var tProc = new mySelf(project);
 			insert = tProc.processTemplate(buffer, request);
 		}
@@ -152,10 +152,10 @@ module.exports = function (p) {
 
 	self.doFunction = function (attributes) {
 		if (!attributes.name) { return ''; }
-		
+
 		var func = templateFunctions[attributes.name];
 		if (!func) { return ''; }
-		
+
 		var result = func(attributes);
 		return (result) ? result : '';
 	};
@@ -169,11 +169,11 @@ module.exports = function (p) {
 		if (!attributes.path) { return ''; } //don't know where to find code behind file
 
 		var paramBlock = match[2];
-    	
+
 	    var params = {};
 	    var paramRegex = /{@ ([^@}]*)@}([\s\S]*?){\/@}/g;
 	    var paramMatch;
-		
+
 		while (paramMatch = paramRegex.exec(paramBlock)) {
 			var paramName = Utilities.trimString(paramMatch[1], ' ');
 	        params[paramName] = paramMatch[2];
@@ -186,7 +186,7 @@ module.exports = function (p) {
 	    params.request = request;
 	    params.project = project;
 	    var result = codeBehind[functionName](params);
-	    
+
 	    return (result) ? result : '';
 	};
 };
