@@ -6,7 +6,8 @@ module.exports = function(config) {
 	Logger = new logger();
 
 	var websites = { };
-	for (var key in config.domains) {
+	var domains = config.domains;
+	for (var key in domains) {
 	    if (domains.hasOwnProperty(key)) {
 	    	var siteFolder = domains[key].folder;
 
