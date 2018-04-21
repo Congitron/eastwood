@@ -1,5 +1,4 @@
 module.exports = function(config) {
-	//var domains = require('./domains.json'),
 	var website = require('./website.js'),
 		logger = require('./logger.js');
 
@@ -46,7 +45,12 @@ module.exports = function(config) {
 	}).listen(port);
 	Logger.log('Eastwood server http listening on ' + port);
 
+
 	// https
+	if (!config.https || !config.https.key || !config.https.cert) {
+		return;
+	}
+
 	var https = require('https');
 	var fs = require('fs');
 	var httpsPort = 443;

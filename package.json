@@ -1,5 +1,5 @@
 {
-  "name": "eastwood",
+  "name": "eastwood-app",
   "version": "0.0.1",
   "description": "Eastwood web app framework",
   "main": "eastwood.js",
