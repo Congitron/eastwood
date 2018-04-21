@@ -1,0 +1,24 @@
+{
+  "name": "eastwood",
+  "version": "0.0.1",
+  "description": "Eastwood web app framework",
+  "main": "eastwood.js",
+  "dependencies": {
+    "pg": "^4.4.2",
+    "sendgrid": "^1.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Congitron/eastwood.git"
+  },
+  "author": "Mathew Welch (http://www.mathewwelch.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Congitron/eastwood/issues"
+  },
+  "homepage": "https://github.com/Congitron/eastwood#readme"
+}
