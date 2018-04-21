@@ -2,6 +2,8 @@
 
 The project with no name.
 
+**_I'm currently refactoring this project into a useable npm package -- it's a work in progress ATM!_**
+
 ### Why should I use Eastwood? ###
 
 * You shouldn't.  There aren't enough web frameworks out there yet so you should go write your own.
