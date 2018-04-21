@@ -3,9 +3,6 @@
 module.exports = function (p) {
 	var self = this,
 
-	var logger = require('./logger.js');
-	logger = new logger();
-	
 	http = require('http'),
 	sys = require('sys'),
 	http = require('http'),
@@ -14,6 +11,9 @@ module.exports = function (p) {
 	fs = require('fs'),
 
 	RequestContext = require('./requestContext.js');
+
+	var logger = require('./logger.js');
+	logger = new logger();
 
 	var project = p;
 	var urls = require('../../' + project.settings.projectFolder + '/urls.json');
