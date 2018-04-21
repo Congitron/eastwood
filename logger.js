@@ -12,7 +12,7 @@ module.exports = function () {
 			console.log(message + '\n');
 			self.fs.appendFile(self.logFile, message + '\n', 'utf8', function () {});
 		}
-		catch (ex) { Logger.log('exception in logger.log: ' + ex); }
+		catch (ex) { console.log('exception in logger.log: ' + ex); }
 	};
 
 	self.logObject = function (message, o) {

@@ -4,8 +4,7 @@ module.exports = function(config) {
 	var website = require('./website.js'),
 		logger = require('./logger.js');
 
-	//var utilities = require('./utilities.js');
-	var logger = new logger();
+	logger = new logger();
 
 	var websites = { };
 	var domains = config.domains;

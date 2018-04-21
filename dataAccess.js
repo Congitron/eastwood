@@ -1,6 +1,9 @@
 "use strict";
 
  module.exports = function (project) {
+ var logger = require('./logger.js');
+ logger = new logger();
+
 	var self = this,
 	project = project,
 	pg = require('pg'),
@@ -13,11 +16,11 @@
 		pg.connect(connectionString, function (err, client, done) {
 			try {
 				if (err) {
-					Logger.error('error fetching client from pool', err);
+					logger.error('error fetching client from pool', err);
 				}
 				else {
 					client.query(text, function (err, result) {
-						if (err) { Logger.error('error running query', err); }
+						if (err) { logger.error('error running query', err); }
 						rowHandler(result.rows);
 					});
 				}

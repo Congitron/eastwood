@@ -3,6 +3,9 @@
 module.exports = function(req, res, dat, proj, usr) {
 	this.request = req;
 
+	var logger = require('./logger.js');
+  logger = new logger();
+
 	var urlParts = require('url').parse(req.url, true);
 	this.query = urlParts.query;
 	this.uri = urlParts.pathname;
@@ -27,7 +30,7 @@ module.exports = function(req, res, dat, proj, usr) {
 
 			require('fs').readFile(pagePath, 'utf-8', function (err, text) { me.renderTemplateString.apply(me, [text]);	});
 		}
-		catch (ex) { Logger.log('exception in requestContext.renderTemplate: ' + ex); }
+		catch (ex) { logger.log('exception in requestContext.renderTemplate: ' + ex); }
 	};
 
 	this.renderTemplateString = function (template) {
@@ -38,7 +41,7 @@ module.exports = function(req, res, dat, proj, usr) {
 			this.response.setHeader('Content-Type', 'text/html');
 			this.response.end(parsedText);
 		}
-		catch (ex) { Logger.log('exception in requestContext.renderTemplateString: ' + ex); }
+		catch (ex) { logger.log('exception in requestContext.renderTemplateString: ' + ex); }
 	};
 
 	this.returnFile = function (filePath) {
@@ -61,7 +64,7 @@ module.exports = function(req, res, dat, proj, usr) {
 				return;
 			});
 		}
-		catch (ex) { Logger.log('exception in requestContext.returnFile: ' + ex); }
+		catch (ex) { logger.log('exception in requestContext.returnFile: ' + ex); }
 	};
 
 	this.getContentType = function (filePath) {
@@ -70,6 +73,6 @@ module.exports = function(req, res, dat, proj, usr) {
 			else if (filePath.endsWith('.css')) { return 'text/css'; }
 			return null;
 		}
-		catch (ex) { Logger.log('exception in requestContext.getContentType: ' + ex); }
+		catch (ex) { logger.log('exception in requestContext.getContentType: ' + ex); }
 	};
 };

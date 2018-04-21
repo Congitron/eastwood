@@ -9,6 +9,9 @@ module.exports = function () {
 	myself = require('./templateParser.js'),
 	var utilities = require('./utilities.js');
 
+	var logger = require('./logger.js');
+  logger = new logger();
+
 	//self.baseTemplate = null; //these get added on the fly if the template extends a base template, but they're here for reference
 	//self.baseBlock = null;
 
@@ -58,7 +61,7 @@ module.exports = function () {
 			if (extended) { return self.baseTemplate; }
 			return template;
 		}
-		catch (ex) { Logger.log('exception in templateParser.processTemplate: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.processTemplate: ' + ex); }
 	};
 
 	self.processTag = function (template, match, tag) {
@@ -75,7 +78,7 @@ module.exports = function () {
 
 			return ''; //if we can't process it, just remove it
 		}
-		catch (ex) { Logger.log('exception in templateParser.processTag: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.processTag: ' + ex); }
 	};
 
 	self.doStatic = function (attributes) {
@@ -100,7 +103,7 @@ module.exports = function () {
 
 			return staticPath;
 		}
-		catch (ex) { Logger.log('exception in templateParser.doStatic: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.doStatic: ' + ex); }
 	};
 
 	self.doExtend = function (attributes) {
@@ -119,7 +122,7 @@ module.exports = function () {
 			self.baseBlock = attributes.block; // this is where we will insert in the base template
 			return ''; // we don't insert the base template into the extending template, it's vice versa..
 		}
-		catch (ex) { Logger.log('exception in templateParser.doExtend: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.doExtend: ' + ex); }
 	};
 
 	self.doInclude = function (attributes) {
@@ -137,7 +140,7 @@ module.exports = function () {
 
 			return insert;
 		}
-		catch (ex) { Logger.log('exception in templateParser.doInclude: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.doInclude: ' + ex); }
 	};
 
 	self.doValue = function (attributes) {
@@ -148,7 +151,7 @@ module.exports = function () {
 			var value = templateValues[attributes.name];
 			return (value) ? value : '';
 		}
-		catch (ex) { Logger.log('exception in templateParser.doValue: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.doValue: ' + ex); }
 	};
 
 	self.doFunction = function (attributes) {
@@ -162,7 +165,7 @@ module.exports = function () {
 			var result = func(attributes);
 			return (result) ? result : '';
 		}
-		catch (ex) { Logger.log('exception in templateParser.doFunction: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.doFunction: ' + ex); }
 	};
 
 	self.processMultiline = function (template, match) {
@@ -193,6 +196,6 @@ module.exports = function () {
 
 		    return (result) ? result : '';
 		}
-		catch (ex) { Logger.log('exception in templateParser.processMultiline: ' + ex); }
+		catch (ex) { logger.log('exception in templateParser.processMultiline: ' + ex); }
 	};
 };

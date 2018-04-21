@@ -3,6 +3,9 @@
 module.exports = function (p) {
 	var self = this,
 
+	var logger = require('./logger.js');
+	logger = new logger();
+	
 	http = require('http'),
 	sys = require('sys'),
 	http = require('http'),
@@ -31,7 +34,7 @@ module.exports = function (p) {
 			request.on('data', function (chunk) { data += chunk; });
 			request.on('end', function () { self.processRequest(request, response, data); });
 		}
-		catch (ex) { Logger.log('exception in requestHandler.handleRequest: ' + ex); }
+		catch (ex) { logger.log('exception in requestHandler.handleRequest: ' + ex); }
 	};
 
 	self.processRequest = function (request, response, data) {
@@ -39,11 +42,11 @@ module.exports = function (p) {
 			var user = project.sessionManager.isLoggedIn(request);
 			var requestContext = new RequestContext(request, response, data, project, user);
 
-			Logger.log('requested url: ' + request.url);
+			logger.log('requested url: ' + request.url);
 
 			self.processUrl(requestContext.uri, requestContext);
 		}
-		catch (ex) { Logger.log('exception in requestHandler.processRequest: ' + ex); }
+		catch (ex) { logger.log('exception in requestHandler.processRequest: ' + ex); }
 	};
 
 	self.processUrl = function (requestedUrl, requestContext) {
@@ -69,6 +72,6 @@ module.exports = function (p) {
 				}
 			});
 		}
-		catch (ex) { Logger.log('exception in requestHandler.processUrl: ' + ex); }
+		catch (ex) { logger.log('exception in requestHandler.processUrl: ' + ex); }
 	};
 };
