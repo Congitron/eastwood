@@ -2,7 +2,7 @@ module.exports = function (project) {
 	var self = this,
 	project= project,
 	dao = project.dao,
-	models = require('./' + project.settings.projectFolder + '/models.json'),
+	models = require('../../' + project.settings.projectFolder + '/models.json'),
 	modelBase = require('./model.js');
 
 	self.newModel = function (orm, key, model) {

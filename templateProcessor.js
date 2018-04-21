@@ -179,7 +179,7 @@ module.exports = function (p) {
 	        params[paramName] = paramMatch[2];
 	    }
 
-	    var filename = './' + project.settings.projectFolder + '/' + project.settings.viewFolder + '/' + attributes.path;
+	    var filename = '../../' + project.settings.projectFolder + '/' + project.settings.viewFolder + '/' + attributes.path;
 	    var codeBehind = require(filename);
 	    if (!codeBehind) { return ''; }
 
