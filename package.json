@@ -1,6 +1,6 @@
 {
   "name": "eastwood-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Eastwood web app framework",
   "main": "eastwood.js",
   "dependencies": {
