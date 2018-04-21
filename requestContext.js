@@ -6,8 +6,6 @@ module.exports = function(req, res, dat, proj, usr) {
 	var logger = require('./logger.js');
   logger = new logger();
 
-	logger.log('request context');
-
 	var urlParts = require('url').parse(req.url, true);
 	this.query = urlParts.query;
 	this.uri = urlParts.pathname;
@@ -22,9 +20,9 @@ module.exports = function(req, res, dat, proj, usr) {
 
 	// var Utilities = require('./utilities.js');
 	// this.utilities = new Utilities();
+
 	var TemplateParser = require('./templateParser.js');
 
-	logger.log('renderTemplate');
 	this.renderTemplate = function (templatePath) {
 		try {
 			var pagePath = this.settings.projectFolder + '/' + this.settings.viewFolder + '/' + templatePath;
@@ -45,7 +43,7 @@ module.exports = function(req, res, dat, proj, usr) {
 		}
 		catch (ex) { logger.log('exception in requestContext.renderTemplateString: ' + ex); }
 	};
-	logger.log('returnFile');
+
 	this.returnFile = function (filePath) {
 		try {
 			var me = this;
@@ -68,7 +66,7 @@ module.exports = function(req, res, dat, proj, usr) {
 		}
 		catch (ex) { logger.log('exception in requestContext.returnFile: ' + ex); }
 	};
-	logger.log('getContentType');
+
 	this.getContentType = function (filePath) {
 		try {
 			if (filePath.endsWith('.svg')) { return 'image/svg+xml'; }

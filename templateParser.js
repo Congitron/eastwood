@@ -7,7 +7,7 @@ module.exports = function () {
 	fs = require('fs'),
 
 	myself = require('./templateParser.js'),
-	var utilities = require('./utilities.js');
+	utilities = require('./utilities.js');
 
 	var logger = require('./logger.js');
   logger = new logger();
