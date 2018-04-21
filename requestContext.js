@@ -1,4 +1,5 @@
-// Request Context
+"use strict";
+
 module.exports = function(req, res, dat, proj, usr) {
 	this.request = req;
 
@@ -14,8 +15,8 @@ module.exports = function(req, res, dat, proj, usr) {
 	this.user = usr;
 	this.sessionManager = proj.sessionManager;
 
-	var Utilities = require('./utilities.js');
-	this.utilities = new Utilities();
+	// var Utilities = require('./utilities.js');
+	// this.utilities = new Utilities();
 
 	var TemplateParser = require('./templateParser.js');
 

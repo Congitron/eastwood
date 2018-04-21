@@ -1,4 +1,8 @@
+"use strict";
+
 module.exports = function (p) {
+	var utilities = require('./utilities.js');
+
 	var self = this;
 	self.project = p;
 
@@ -13,7 +17,7 @@ module.exports = function (p) {
 				callback(sessId, rows[0]);
 			}
 			callback(null);
-		}); 
+		});
 	};
 
 	self.logoffUser = function (user) {
@@ -31,8 +35,8 @@ module.exports = function (p) {
 
   			for (var i = 0; i < matches.length; i++) {
   				var parts = matches[i].split('=');
-  				var name = Utilities.trimString(parts[0], ' ');
-  				var value = Utilities.trimString(parts[1], ' ');
+  				var name = utilities.trimString(parts[0], ' ');
+  				var value = utilities.trimString(parts[1], ' ');
 
   				if (name == 'sessId' && self.sessions[value]) {
   					user = self.sessions[value];

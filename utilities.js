@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
 	trimString: function(str, trim) {
 	    str = str.split(trim);

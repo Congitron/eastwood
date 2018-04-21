@@ -1,9 +1,12 @@
+"use strict";
+
 module.exports = function (p) {
 	var self = this,
 
 	//node.js
 	path = require('path'),
 	fs = require('fs'),
+	utilities = require('./utilities.js'),
 
 	//eastwood
 	project = p,
@@ -28,7 +31,7 @@ module.exports = function (p) {
 			for (var m = 0; m < matches.length; m++) {
 				var match = matches[m];
 				var tag = match.replace(/{:(.*):}/g,'$1');
-			    tag = Utilities.trimString(tag, ' ');
+			    tag = utilities.trimString(tag, ' ');
 			    var replacement = self.processTag(template, match, tag, request);
 			    template = template.replace(match, replacement);
 			}
@@ -51,12 +54,12 @@ module.exports = function (p) {
 			for (var m = 0; m < matches.length; m++) {
 			    var match = matches[m];
 			    var tag = match.replace(/{:(.*):}/g,'$1');
-			    tag = Utilities.trimString(tag, ' ');
+			    tag = utilities.trimString(tag, ' ');
 			    var action = tag.split(' ')[0];
 
 			    if (action != 'block') { continue; }
 
-			    var attributes = Utilities.parseAttributes(tag);
+			    var attributes = utilities.parseAttributes(tag);
 			    if (attributes.name == self.baseBlock) {
 			    	self.baseTemplate = self.baseTemplate.replace(match, template);
 			    	extended = true;
@@ -70,7 +73,7 @@ module.exports = function (p) {
 
 	self.processTag = function (template, match, tag, request) {
 		var action = tag.split(' ')[0];
-		var attributes = Utilities.parseAttributes(tag);
+		var attributes = utilities.parseAttributes(tag);
 
 		// Could set up a dictionary in the constructor so you can just do this:
 		// if (tagHandlers[tag]) { return tagHandlers[tag](attributes); }
@@ -162,9 +165,9 @@ module.exports = function (p) {
 
 	self.processMultiline = function (template, match, request) {
 		var functionTag = match[1];
-		functionTag = Utilities.trimString(functionTag, ' ');
+		functionTag = utilities.trimString(functionTag, ' ');
 		var functionName = functionTag.split(' ')[0];
-		var attributes = Utilities.parseAttributes(functionTag);
+		var attributes = utilities.parseAttributes(functionTag);
 
 		if (!attributes.path) { return ''; } //don't know where to find code behind file
 
@@ -175,7 +178,7 @@ module.exports = function (p) {
 	    var paramMatch;
 
 		while (paramMatch = paramRegex.exec(paramBlock)) {
-			var paramName = Utilities.trimString(paramMatch[1], ' ');
+			var paramName = utilities.trimString(paramMatch[1], ' ');
 	        params[paramName] = paramMatch[2];
 	    }
 

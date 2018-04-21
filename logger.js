@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function () {
 	var self = this;
 	self.fs = require('fs');
@@ -15,8 +17,8 @@ module.exports = function () {
 
 	self.logObject = function (message, o) {
 		try {
-			if (message) { 
-				console.log(message + '\n'); 
+			if (message) {
+				console.log(message + '\n');
 				self.fs.appendFile(self.logFile, message + '\n', 'utf8', function () {});
 			}
 			console.log(JSON.stringify(o));
@@ -25,7 +27,7 @@ module.exports = function () {
 		catch (ex) {
 			// it was probably circular
 			try {
-				for (var key in o) { 
+				for (var key in o) {
 					if (o.hasOwnProperty(key)) {
 						var out = key + ': ' + o[key];
 						console.log(out);

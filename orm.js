@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function (project) {
 	var self = this,
 	project= project,

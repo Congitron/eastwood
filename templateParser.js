@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function () {
 	var self = this,
 
@@ -5,7 +7,7 @@ module.exports = function () {
 	fs = require('fs'),
 
 	myself = require('./templateParser.js'),
-	Utilities = require('./utilities.js');
+	var utilities = require('./utilities.js');
 
 	//self.baseTemplate = null; //these get added on the fly if the template extends a base template, but they're here for reference
 	//self.baseBlock = null;
@@ -45,7 +47,7 @@ module.exports = function () {
 
 				    if (action != 'block') { continue; }
 
-				    var attributes = Utilities.parseAttributes(tag);
+				    var attributes = utilities.parseAttributes(tag);
 				    if (attributes.name == self.baseBlock) {
 				    	self.baseTemplate = self.baseTemplate.replace(match, template);
 				    	extended = true;
@@ -62,7 +64,7 @@ module.exports = function () {
 	self.processTag = function (template, match, tag) {
 		try {
 			var action = tag.split(' ')[0];
-			var attributes = Utilities.parseAttributes(tag);
+			var attributes = utilities.parseAttributes(tag);
 
 			if (action == 'static') { return self.doStatic.apply(this, [attributes]); }
 			if (action == 'extend') { return self.doExtend.apply(this, [attributes]); }
@@ -168,7 +170,7 @@ module.exports = function () {
 			var functionTag = match[1];
 			functionTag = functionTag.trim();
 			var functionName = functionTag.split(' ')[0];
-			var attributes = Utilities.parseAttributes(functionTag);
+			var attributes = utilities.parseAttributes(functionTag);
 
 			if (!attributes.path) { return ''; } //don't know where to find code behind file
 

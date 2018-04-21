@@ -1,9 +1,11 @@
+"use strict";
+
 module.exports = function(config) {
 	var website = require('./website.js'),
 		logger = require('./logger.js');
 
-	Utilities = require('./utilities.js');
-	Logger = new logger();
+	//var utilities = require('./utilities.js');
+	var logger = new logger();
 
 	var websites = { };
 	var domains = config.domains;
@@ -42,9 +44,9 @@ module.exports = function(config) {
 				response.end('<html><body><h1>404</h1><h1>Eh, I\'m sure it\'s around here somewhere...</h1></body></html>');
 			}
 		}
-		catch (ex) { Logger.log('Exception in http server: ' + ex); }
+		catch (ex) { logger.log('Exception in http server: ' + ex); }
 	}).listen(port);
-	Logger.log('Eastwood server http listening on ' + port);
+	logger.log('Eastwood server http listening on ' + port);
 
 
 	// https
@@ -79,9 +81,9 @@ module.exports = function(config) {
 			}
 		}
 		catch (ex) {
-			Logger.log('Exception in https server: ' + ex);
-			Logger.log('host: ' + request.headers.host);
+			logger.log('Exception in https server: ' + ex);
+			logger.log('host: ' + request.headers.host);
 		}
 	}).listen(httpsPort);
-	Logger.log('Eastwood server https listening on ' + httpsPort);
+	logger.log('Eastwood server https listening on ' + httpsPort);
 };

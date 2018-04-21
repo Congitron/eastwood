@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(projectFolder) {
 	var self = this,
 	RequestHandler = require('./requestHandler.js'),

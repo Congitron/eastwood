@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function (t, p) {
 	var self = this,
 	project = p;
@@ -11,10 +13,10 @@ module.exports = function (t, p) {
 	self.select = function (filter) {
 		// not implemented
 	};
-	
+
 	// Need to implement CRUD stuff still
 
-	self.save = function () { 
+	self.save = function () {
 		if (self.id > 0) { //update
 
 		}
@@ -23,8 +25,8 @@ module.exports = function (t, p) {
 
 		}
 	};
-	
-	self.delete = function () { 
+
+	self.delete = function () {
 		if (self.id > 0) {
 
 		}
