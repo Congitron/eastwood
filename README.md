@@ -59,7 +59,5 @@ You probably want to change your site name.  Then you can include it in your tem
 
 ### Installation ###
 
-* Go install [node.js](https://nodejs.org/)
-* Put Eastwood on your server somewhere
-* type 'node eastwood.js', or if you're on ubuntu you need to type 'nodejs eastwood.js'
+npm install --save eastwood-app
 
